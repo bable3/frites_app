@@ -1,0 +1,11 @@
+<ul class="filter__container">
+  <ng-container *ngFor="let filter of filters">
+    <app-filter [filter]='filter' [activeFilters]="activeFilters"></app-filter>
+  </ng-container>
+</ul>
+<ul class="products__container">
+  <ng-container *ngFor="let product of products">
+    <app-product-card [cart]='cart' [product]='product' *ngIf="activeFilters.includes(product.cat)">
+    </app-product-card>
+  </ng-container>
+</ul>

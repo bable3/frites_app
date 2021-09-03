@@ -1,0 +1,19 @@
+@import '../../variable'
+.cart__container
+    background: $primary
+    color: $secondary
+    position: fixed
+    bottom: 0
+    left: 0
+    right: 0
+    top: calc( 100% - 10px )
+    display: flex
+    justify-content: center
+    font-size: 30px
+    font-weight: 800
+    padding: 15px
+    transition: top 0.4s ease-in-out
+    &.cart__container--active
+        top: calc( 100% - 65px )
+    &.cart__container--expand
+        top: 10px
