@@ -8,10 +8,4 @@ import { CartModule } from './cart/cart.module';
 })
 export class AppComponent {
   title = 'frites';
-
-  cart: CartModule = {
-    items: [],
-    numberOfItems: 0,
-    totalAmount: 0,
-  };
 }
