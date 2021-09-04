@@ -1,5 +1,5 @@
-<li [ngClass]="{'filter--active': checked}">
-  <input (click)="filterProducts(filter)" [(ngModel)]="checked" type="checkbox" id="{{filter}}" name="{{filter}}"
+<li *ngIf="!!filter" [ngClass]="{'filter--active': filter.isActive}">
+  <input [(ngModel)]="filter.isActive" type="checkbox" id="{{filter.name}}" name="{{filter.name}}"
     checked>
-  <label for="{{filter}}">{{filter}}</label>
+  <label for="{{filter.name}}">{{filter.name}}</label>
 </li>

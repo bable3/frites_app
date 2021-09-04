@@ -1,5 +1,6 @@
-<div (click)="expand = !expand" class="cart__container"
-  [ngClass]="{'cart__container--active': cart.totalAmount > 0, 'cart__container--expand' : expand === true && cart.totalAmount > 0}">
-  Panier : {{cart.totalAmount}} €
+
+<div  *ngIf="totalAmount$ | async as totalAmount" (click)="expand = !expand" class="cart__container"
+  [ngClass]="{'cart__container--active': totalAmount > 0, 'cart__container--expand' : expand === true && totalAmount > 0}">
+  Panier : {{ totalAmount | number }} €
 
 </div>

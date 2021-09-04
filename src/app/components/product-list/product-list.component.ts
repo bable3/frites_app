@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Product } from '../product';
-import { CartModule } from '../cart/cart.module';
+import { CartService } from 'src/app/services/cart.service';
+import { Observable, of } from 'rxjs';
+import { Product } from 'src/app/models/product';
+import { Filter } from 'src/app/models/filter';
+import { map } from 'rxjs/operators';
 
 
 
@@ -9,80 +12,14 @@ import { CartModule } from '../cart/cart.module';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.sass']
 })
-export class ProductListComponent implements OnInit {
-  @Input() cart: CartModule;
+export class ProductListComponent {
+  public products$: Observable<Product[]>;
+  public filters$: Observable<Filter[]>;
 
-  products: Product[] = [
-    {
-      name: 'Petite Frites',
-      price: 1.1,
-      cat: "Frites",
-      numberInCart: 0
-    },
-    {
-      name: 'Moyenne Frites',
-      price: 2,
-      cat: "Frites",
-      numberInCart: 0
-    },
-    {
-      name: 'Grande Frites',
-      price: 3,
-      cat: "Frites",
-      numberInCart: 0
-    },
-    {
-      name: 'Hamburger',
-      price: 4,
-      cat: "Viandes",
-      numberInCart: 0
-    },
-    {
-      name: 'Fricadelle',
-      price: 1,
-      cat: "Viandes",
-      numberInCart: 0
-    },
-    {
-      name: 'Brazil',
-      price: 2,
-      cat: "Sauces",
-      numberInCart: 0
-    },
-    {
-      name: 'Géant',
-      price: 1,
-      cat: "Sauces",
-      numberInCart: 0
-    },
-    {
-      name: 'BBQ',
-      price: 1,
-      cat: "Sauces",
-      numberInCart: 0
-    },
-    {
-      name: 'Mayo',
-      price: 2,
-      cat: "Sauces",
-      numberInCart: 0
-    },
-  ];
-
-  filters = [];
-  activeFilters = [];
-
-
-  constructor() { }
-
-  ngOnInit() {
-    this.products.forEach((product) => {
-      if (!this.filters.includes(product.cat)) {
-        this.filters.push(product.cat);
-        this.activeFilters.push(product.cat);
-      }
-    });
-    console.log(this.filters)
+  constructor(private cartService: CartService) {
+    this.products$ = this.cartService.items$;
+    this.filters$ = this.products$.pipe(
+      map(p => p.filter((v, i, products) => products.indexOf(v) === i))
+    );
   }
-
 }
