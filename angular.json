@@ -6,6 +6,9 @@
     "frites": {
       "projectType": "application",
       "schematics": {
+        "@schematics/angular:component": {
+          "style": "sass"
+        },
         "@schematics/angular:application": {
           "strict": true
         }
@@ -27,8 +30,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.sass"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -94,8 +102,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.sass"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles"
+              ]
+            },
             "scripts": []
           }
         }
