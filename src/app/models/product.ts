@@ -1,6 +1,5 @@
-export interface Product {
-    name: string,
-    price: number,
-    cat: string,
-    numberInCart: number,
+export class Product {
+    public name!: string;
+    public price!: number;
+    public cat!: string;
 }

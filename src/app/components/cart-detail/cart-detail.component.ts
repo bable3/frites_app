@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/product';
+import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -10,9 +10,15 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartDetailComponent {
   public expand: boolean = false;
-  public totalAmount$ : Observable<number>;
+  public totalAmount: number = 0;
+  private subscription: Subscription = new Subscription;
 
   constructor(public cartService: CartService) {
-    this.totalAmount$ = this.cartService.totalAmount$;
+    this.subscription = this.cartService.totalAmount$.pipe(
+      tap(t => this.totalAmount = t)
+    ).subscribe();
+  }
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

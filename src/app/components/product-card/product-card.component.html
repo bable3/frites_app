@@ -1,4 +1,4 @@
-<li *ngIf="!!product">
+<li *ngIf="!!product ">
   <div class="info__container">
     <h3>{{product.name}}</h3>
     <div class="info">
@@ -7,9 +7,9 @@
     <div class="price">{{product.price}} €</div>
   </div>
   <div class="numbers">
-    <button [disabled]="product.numberInCart <= 0" (click)="removeProduct()">-</button>
-    <input type="number" min='0' [(ngModel)]="product.numberInCart"
-      value="{{product.numberInCart}}">
+    <button [disabled]="numberOfItems <= 0" (click)="removeProduct()">-</button>
+    <input type="number" min='0'
+      value="{{ numberOfItems }}">
     <button (click)="addProduct()">+</button>
   </div>
 </li>
