@@ -3,7 +3,8 @@ import { CartService } from 'src/app/services/cart.service';
 import { Observable, of } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { Filter } from 'src/app/models/filter';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { ProductService } from 'src/app/services/product.service';
 
 
 
@@ -16,10 +17,8 @@ export class ProductListComponent {
   public products$: Observable<Product[]>;
   public filters$: Observable<Filter[]>;
 
-  constructor(private cartService: CartService) {
-    this.products$ = this.cartService.items$;
-    this.filters$ = this.products$.pipe(
-      map(p => p.filter((v, i, products) => products.indexOf(v) === i))
-    );
+  constructor(private productService: ProductService) {
+    this.products$ = this.productService.product$;
+    this.filters$ = this.productService.filter$;
   }
 }

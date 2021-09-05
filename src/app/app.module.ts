@@ -8,6 +8,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductListComponent } from './components/product-list/product-list.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
