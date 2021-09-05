@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CartModule } from './cart/cart.module';
+import { Component, OnDestroy } from '@angular/core';
+import { ProductService } from './services/product.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,7 @@ import { CartModule } from './cart/cart.module';
 export class AppComponent {
   title = 'frites';
 
-  cart: CartModule = {
-    items: [],
-    numberOfItems: 0,
-    totalAmount: 0,
-  };
+  constructor(private productService: ProductService) {
+    this.productService.getAllProduct().subscribe();
+  }
 }

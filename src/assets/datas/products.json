@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Petite Frites",
+        "price": 1.1,
+        "cat": "Frites"
+      },
+      {
+        "name": "Moyenne Frites",
+        "price": 2,
+        "cat": "Frites"
+      },
+      {
+        "name": "Grande Frites",
+        "price": 3,
+        "cat": "Frites"
+      },
+      {
+        "name": "Hamburger",
+        "price": 4,
+        "cat": "Viandes"
+      },
+      {
+        "name": "Fricadelle",
+        "price": 1,
+        "cat": "Viandes"
+      },
+      {
+        "name": "Brazil",
+        "price": 2,
+        "cat": "Sauces"
+      },
+      {
+        "name": "Géant",
+        "price": 1,
+        "cat": "Sauces"
+      },
+      {
+        "name": "BBQ",
+        "price": 1,
+        "cat": "Sauces"
+      },
+      {
+        "name": "Mayo",
+        "price": 2,
+        "cat": "Sauces"
+      }
+]

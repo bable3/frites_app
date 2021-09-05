@@ -1,0 +1,4 @@
+<li *ngIf="!!filter" [ngClass]="{'filter--active': filter.isActive}">
+  <input type="checkbox" id="{{filter.name}}" name="{{filter.name}}">
+  <label (click)="toggleFilter()" for="{{filter.name}}">{{filter.name}}</label>
+</li>
